@@ -18,7 +18,7 @@ janela2 = registrador()
 # Regras da Janela
 while True:
     eventos2, valores2 = janela2.read()
-    if eventos2 == sg.WINDOW_CLOSED:
+    if eventos2 == sg.WINDOW_CLOSED: #Permitindo que sja encerrado programa
         break
     elif eventos2 == 'Adicionar Registro':
         janela2.extend_layout(janela2['container'], [[sg.Input('',size=(9, 1)), sg.Input('',size=(20, 1)), sg.Input('',size=(5, 1)), sg.Input('',size=(5,1)), sg.Input('',size=(14, 1))]])
