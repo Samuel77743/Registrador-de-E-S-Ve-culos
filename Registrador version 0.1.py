@@ -2,6 +2,7 @@ from PySimpleGUI import PySimpleGUI as sg
 
 
 def registrador():
+
     sg.theme('DarkPurple7')
     linha = [
         [sg.Text('Placa'), sg.Text('          Modelo/cor'), sg.Text('             Entrada'), sg.Text('  Saída'), sg.Text('  Valor do Serviço')],
