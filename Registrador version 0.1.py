@@ -4,14 +4,19 @@ from datetime import datetime as dt
 def registrador():
     layout_menu = [['Arquivo', ['Gerar Relatório', 'Encaminha para E-mail']],
                    ['Opções', ['Alterar Tema', 'Voltar a Tela de Login']],
-                   ['Ajuda', ['Manual do Software', 'Contator Desenvolvedor',['E-mail: samuel0100wanderson@gmail.com', 'higor_scosta@outlook.com']]]]
+                   ['Ajuda', ['Manual do Software', 'Contato Desenvolvedor',['E-mail: samuel0100wanderson@gmail.com', 'higor_scosta@outlook.com']]]]
 
     a = dt.today().strftime('%H:%M')
     b = int()
     c = 'R$ 0,00'
-    sg.theme('DarkPurple7')
+
+    padrao = 'DarkPurple7'
+    cor2 = 'SystemDefaultForReal'
+    cor3 = 'Black'
+    tema = sg.theme(padrao)
+    tema
     linha = [
-        [sg.Menu(layout_menu)],
+        [sg.Menu(layout_menu, background_color="white", text_color="black")],
         [sg.Text('Placa'), sg.Text('          Modelo/cor'), sg.Text('             Entrada'), sg.Text('  Saída'), sg.Text('  Valor do Serviço')],
         [sg.Input('',size=(9, 1)), sg.Input('',size=(20, 1)), sg.Input(a,size=(5, 1)), sg.Input(b,size=(5,1)), sg.Input(c,size=(14, 1))],
     ]
