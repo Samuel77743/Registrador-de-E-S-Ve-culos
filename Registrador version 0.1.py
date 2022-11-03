@@ -6,9 +6,11 @@ def registrador():
                    ['Opções', ['Alterar Tema', 'Voltar a Tela de Login']],
                    ['Ajuda', ['Manual do Software', 'Contato Desenvolvedor',['E-mail: samuel0100wanderson@gmail.com', 'higor_scosta@outlook.com']]]]
 
-    a = dt.today().strftime('%H:%M')
-    b = int()
-    c = 'R$ 0,00'
+    hh_entrada = int(dt.today().strftime('%H'))
+    mm_entrada = int(dt.today().strftime('%M'))
+    hh_saida = int()
+    mm_saida = int()
+    valor_servico = 0
 
     padrao = 'DarkPurple7'
     cor2 = 'SystemDefaultForReal'
@@ -16,9 +18,9 @@ def registrador():
     tema = sg.theme(padrao)
     tema
     linha = [
-        [sg.Menu(layout_menu, background_color="white", text_color="black")],
-        [sg.Text('Placa'), sg.Text('          Modelo/cor'), sg.Text('             Entrada'), sg.Text('  Saída'), sg.Text('  Valor do Serviço')],
-        [sg.Input('',size=(9, 1)), sg.Input('',size=(20, 1)), sg.Input(a,size=(5, 1)), sg.Input(b,size=(5,1)), sg.Input(c,size=(14, 1))],
+        [sg.Menu(layout_menu, background_color="white", text_color="black", key='aba')],
+        [sg.Text('Placa'), sg.Text('          Modelo/cor'), sg.Text('               Entrada'), sg.Text('    Saída'), sg.Text('  Valor do Serviço')],
+        [sg.Input('',size=(9, 1)), sg.Input('',size=(20, 1)), sg.Input(hh_entrada, size=(2, 1)), sg.Input(mm_entrada, size=(2, 1)), sg.VerticalSeparator(), sg.Input(hh_saida, size=(2, 1), key= 'update1'), sg.Input(mm_saida, size=(2, 1), key= 'update2'),  sg.Button('※', button_color=("Grey")), sg.Input(valor_servico, size=(14, 1))],
     ]
     layout2 = [
         [sg.Frame('Registrador', layout=linha, key='container')],
@@ -36,10 +38,13 @@ while True:
     if eventos2 == sg.WINDOW_CLOSED: #Permitindo que seja encerrado programa
         break
     elif eventos2 == 'Adicionar Registro':
-        a = dt.today().strftime('%H:%M')
-        b = int()
-        c = 'R$ 0,00'
-        janela2.extend_layout(janela2['container'], [[sg.Input('',size=(9, 1)), sg.Input('',size=(20, 1)), sg.Input(a,size=(5, 1)), sg.Input(b,size=(5,1)), sg.Input(c,size=(14, 1))]])
+        hh_entrada = int(dt.today().strftime('%H'))
+        mm_entrada = int(dt.today().strftime('%M'))
+        hh_saida = int()
+        mm_saida = int()
+        valor_servico = 0
+        eventos2 = janela2.extend_layout(janela2['container'], [[sg.Input('',size=(9, 1)), sg.Input('',size=(20, 1)), sg.Input(hh_entrada, size=(2, 1)), sg.Input(mm_entrada, size=(2, 1)), sg.VerticalSeparator(), sg.Input(hh_saida, size=(2, 1), key= 'update2'), sg.Input(mm_saida, size=(2, 1), key= 'update1'),  sg.Button('※', button_color=("Grey")), sg.Input(valor_servico, size=(14, 1))]]),
+
     elif eventos2 == 'Resetar Registros':
         sg.theme('DarkPurple5')
         sim = 'Sim'
@@ -52,3 +57,11 @@ while True:
             janela2.close()
             janela2 = registrador()
         else: ()
+    elif eventos2 == '※':
+        janela2['update1'].update(int(dt.today().strftime('%H')))
+        janela2['update2'].update(int(dt.today().strftime('%M')))
+
+
+
+
+
